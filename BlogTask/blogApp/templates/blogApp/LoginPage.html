@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'blogApp/BasePage.html' %}
+
+{% block bodyblock %}
+
+<h2>Login Page</h2>
+<form class="" method="POST">
+  {% csrf_token %}
+
+
+  <label for="">Username:</label>
+  <input type="username" name="username" placeholder="Enter Username">
+  <br>
+  <label for="password">Password</label>
+  <input type="password" name="password" placeholder="Enter password">
+  <input type="submit" name="" value="Login">
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'blogApp/BasePage.html' %}
+
+
+{% block bodyblock %}
+
+
+    {% if bag %}
+          {% for item in blogs %}
+            <ul>
+              <li>
+                {{ item.username }}
+              </li>
+              <li>
+                  {{ item.description }}
+              </li>
+              <li>
+                  <img src="{{ item.pic.url }}" alt="">
+              </li>
+              <li>
+                  {{ item.blog }}
+              </li>
+            </ul>
+          {% endfor %}
+
+      {% else %}
+      <h1>No Blog to Show!</h1>
+
+
+
+    {% endif %}
+
+{% endblock %}

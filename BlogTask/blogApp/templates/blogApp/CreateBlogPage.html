@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'blogApp/BasePage.html' %}
+
+{% block bodyblock %}
+<form  method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="hidden" name="username" value="{{ user.username }}">
+  <label for="description">Description</label>
+  <input type="text" name="description" placeholder="Give a Description here"><br>
+  <label for="">Upload an Image</label>
+  <input type="file" id="img" name="blog_pic" accept="image/*"><br>
+  <label for="">Blog</label>
+  <textarea name="blog" rows="8" cols="40" placeholder="type your thoughts here!">
+
+  </textarea><br>
+
+  <select class="" name="type">
+      <option value="Private">Private Blog</option>
+      <option value="Public">Public Blog</option>
+  </select><br>
+
+  <input type="submit" name="post" value="Post">
+
+
+
+
+</form>
+
+
+
+{% endblock %}

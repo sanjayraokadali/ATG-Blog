@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'blogApp/BasePage.html' %}
+
+{% block bodyblock %}
+
+<div class="container"  >
+
+  <h1>Registration Page</h1>
+    <form class="" method="POST"  >
+      {% csrf_token %}
+      {{ user.as_p }}
+      <h4 style=" color: red;" >{{ message }}</h4>
+      <label for="">Re-Type Password</label>
+      <input type="password" name="re_password" placeholder="retype password"><br>
+
+      <input type="submit" name="" value="Register">
+    </form>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+
+</div>
+
+
+{% endblock %}
