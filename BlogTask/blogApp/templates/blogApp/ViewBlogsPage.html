@@ -7,20 +7,20 @@
 
     {% if bag %}
           {% for item in blogs %}
-            <ul>
-              <li>
-                {{ item.username }}
-              </li>
-              <li>
-                  {{ item.description }}
-              </li>
-              <li>
-                  <img src="{{ item.pic.url }}" alt="">
-              </li>
-              <li>
-                  {{ item.blog }}
-              </li>
-            </ul>
+          <div class="card mb-3" style="max-width: 1200px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{ item.pic.url }}" alt="..." style=" width: 50%;" >
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">@{{ item.username }}</h5>
+                <p class="card-text">{{ item.blog }}</p>
+                <p class="card-text"><small class="text-muted">Description: {{ item.description }}</small></p>
+              </div>
+            </div>
+          </div>
+          </div>
           {% endfor %}
 
       {% else %}

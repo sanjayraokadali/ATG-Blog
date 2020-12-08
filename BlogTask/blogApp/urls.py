@@ -12,5 +12,7 @@ urlpatterns = [
     url('^LoginPage/$',views.LoginPage,name='loginpage'),
     url('^ViewBlogs/$',views.ViewBlogsPage,name='viewblogspage'),
     url('^CreateBlogPage/$',views.CreateBlogPage,name='createblogpage'),
+    url('^PrivateBlogs/$',views.PrivateBlogsPage,name='privateblogspage'),
+    url('^UserSearch/$',views.SearchUserPage,name='searchuserpage'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from blogApp.forms import UserRegistrationForm
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+
 
 from blogApp.models import PublicBlogModel,PrivateBlogModel
 
@@ -10,7 +12,26 @@ from blogApp.models import PublicBlogModel,PrivateBlogModel
 # Create your views here.
 def BasePage(request):
 
+
+
     return render(request,'blogApp/BasePage.html')
+
+def SearchUserPage(request):
+
+    if request.method == 'POST':
+
+        blogs = PublicBlogModel.objects.all()
+
+        search_user = request.POST.get('search_user')
+
+
+        return render(request,'blogApp/SearchUserPage.html',{'blogs':blogs,'search_user':search_user})
+    else:
+
+        return HttpResponse('User Not Found')
+
+
+
 
 def ViewBlogsPage(request):
 
@@ -24,6 +45,21 @@ def ViewBlogsPage(request):
         bag =True
 
     return render(request,'blogApp/ViewBlogsPage.html',{'blogs':blogs,'bag':bag})
+
+def PrivateBlogsPage(request):
+
+    bag = True
+
+    blogs = PrivateBlogModel.objects.all()
+
+
+    if PrivateBlogModel.objects.count() == 0:
+
+        bag = False
+    else:
+        bag = True
+
+    return render(request,'blogApp/PrivateBlogsPage.html',{'blogs':blogs,'bag':bag})
 
 
 def RegistrationPage(request):
@@ -112,6 +148,7 @@ def LoginPage(request):
 
     return render(request,'blogApp/LoginPage.html')
 
+@login_required
 def LogOut(request):
 
     logout(request)

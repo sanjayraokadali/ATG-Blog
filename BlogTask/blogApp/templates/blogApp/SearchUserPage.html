@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends 'blogApp/BasePage.html' %}
+
+
+{% block bodyblock %}
+
+  {% for item in blogs %}
+
+      {% if item.username == search_user %}
+
+      <div class="card">
+      <div class="card-body">
+        <h4>Name: {{ item.first_name }} {{ item.Last_name }} </h4>
+
+          <h3>Posts by @{{ item.username }}</h3>
+              <div class="row row-cols-1 row-cols-md-3 g-4">
+              {% for item in blogs %}
+
+                {% if item.username == search_user %}
+
+
+                      <div class="col">
+                        <div class="card-footer">
+                          <small class="text-muted">{{ item.description }}</small>
+                        </div>
+                        <div class="card">
+                          <img src="{{ item.pic.url }}" class="card-img-top" alt="..."  >
+                          <div class="card-body">
+                            <h5 class="card-title">@{{ item.username }}</h5>
+                            <p class="card-text">{{ item.blog }}</p>
+                          </div>
+                        </div>
+                      </div>
+
+
+                {% endif %}
+              {% endfor %}
+                </div>
+
+      </div>
+      </div>
+      {{ break }}
+      {% endif %}
+
+
+  {% endfor %}
+
+
+
+{% endblock %}
