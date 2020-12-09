@@ -1,3 +1,3 @@
 # ATG-Blog
 
-www.atgblog.pythonanywhere.com
+atgblog.pythonanywhere.com
