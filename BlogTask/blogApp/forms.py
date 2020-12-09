@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core import validators
+from captcha.fields import CaptchaField
 
 def validate_password(value):
 
@@ -17,9 +18,10 @@ class UserRegistrationForm(forms.ModelForm):
 
     password = forms.CharField(widget = forms.PasswordInput, validators = [validate_password])
 
+    captcha = CaptchaField()
 
     class Meta:
 
         model = User
 
-        fields = ('first_name','last_name','username','password')
+        fields = ('first_name','last_name','username','captcha','password')
