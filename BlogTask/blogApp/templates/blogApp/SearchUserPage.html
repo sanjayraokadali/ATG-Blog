@@ -3,48 +3,32 @@
 
 
 {% block bodyblock %}
-
+  <h2>Hi @{{user.username}} , I am @{{search_user}} </h2>
   {% for item in blogs %}
 
-      {% if item.username == search_user %}
+      {% if search_user == item.username %}
 
-      <div class="card">
-      <div class="card-body">
-        <h4>Name: {{ item.first_name }} {{ item.Last_name }} </h4>
+          <div class="card mb-3" style="max-width: 1200px; border-radius: 50px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{ item.pic.url }}" alt="..." style=" width: 50%; border-radius: 50px;" >
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">@{{ item.username }}</h5>
+                  <p class="card-text"><small class="text-muted">Description: {{ item.description }}</small></p>
+                <p class="card-text">{{ item.blog }}</p>
 
-          <h3>Posts by @{{ item.username }}</h3>
-              <div class="row row-cols-1 row-cols-md-3 g-4">
-              {% for item in blogs %}
-
-                {% if item.username == search_user %}
-
-
-                      <div class="col">
-                        <div class="card-footer">
-                          <small class="text-muted">{{ item.description }}</small>
-                        </div>
-                        <div class="card">
-                          <img src="{{ item.pic.url }}" class="card-img-top" alt="..."  >
-                          <div class="card-body">
-                            <h5 class="card-title">@{{ item.username }}</h5>
-                            <p class="card-text">{{ item.blog }}</p>
-                          </div>
-                        </div>
-                      </div>
+              </div>
+            </div>
+          </div>
+          </div>
 
 
-                {% endif %}
-              {% endfor %}
-                </div>
-
-      </div>
-      </div>
-      {{ break }}
       {% endif %}
 
 
   {% endfor %}
-
 
 
 {% endblock %}

@@ -2,29 +2,57 @@
 {% extends 'blogApp/BasePage.html' %}
 
 {% block bodyblock %}
-<form  method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  <input type="hidden" name="username" value="{{ user.username }}">
-  <label for="description">Description</label>
-  <input type="text" name="description" placeholder="Give a Description here"><br>
-  <label for="">Upload an Image</label>
-  <input type="file" id="img" name="blog_pic" accept="image/*"><br>
-  <label for="">Blog</label>
-  <textarea name="blog" rows="8" cols="40" placeholder="type your thoughts here!">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+      <input type="hidden" name="username" value="{{ user.username }}">
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name='description' id="inputEmail3" placeholder="Description">
+    </div>
+  </div>
+  <div class="form-group row">
+   <label for="exampleFormControlFile1">Upload an Image</label>
+   <input type="file" id="img" name="blog_pic" accept="image/*" class="form-control-file" id="exampleFormControlFile1">
+ </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Blog Privacy</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="type" id="gridRadios1" value="Private" checked>
+          <label class="form-check-label" for="gridRadios1">
+            Make it a Private Blog
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="type" id="gridRadios2" value="Public">
+          <label class="form-check-label" for="gridRadios2">
+            Make it a Public Blog
+          </label>
+        </div>
 
-  </textarea><br>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">Blog</label>
+  <div class="col-sm-10">
+    <textarea name="blog" rows="8" cols="80" placeholder="Type Your Thoughts Here!!!!"></textarea>
+  </div>
 
-  <select class="" name="type">
-      <option value="Private">Private Blog</option>
-      <option value="Public">Public Blog</option>
-  </select><br>
-
-  <input type="submit" name="post" value="Post">
-
-
-
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button style=" position: relative; top: 50%; left:55%;"  type="submit" class="btn btn-success">POST</button>
+    </div>
+  </div>
 
 </form>
+
+
+
+
 
 
 

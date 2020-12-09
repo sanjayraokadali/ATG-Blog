@@ -7,7 +7,7 @@ class PublicBlogModel(models.Model):
 
     description = models.CharField(max_length=264, blank=False)
 
-    pic = models.ImageField(upload_to = 'pics')
+    pic = models.ImageField(upload_to = 'pics',blank=True)
 
     blog =  models.TextField()
 
@@ -21,7 +21,7 @@ class PrivateBlogModel(models.Model):
 
     description = models.CharField(max_length=264, blank=False)
 
-    pic = models.ImageField(upload_to= 'pics')
+    pic = models.ImageField(upload_to= 'pics',blank=True)
 
     blog = models.TextField()
 

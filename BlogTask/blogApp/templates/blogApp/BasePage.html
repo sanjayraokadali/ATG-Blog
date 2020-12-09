@@ -4,18 +4,22 @@
   <head>
     <meta charset="utf-8">
     <title>ATG BLOG TASK</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
       </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <body style=" background-image: url('https://img.wallpapersafari.com/tablet/2560/1700/4/60/LnKGoB.png'); background-attachment: fixed; scroll-behavior: smooth; " >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style=" margin: 30px; height: 100px; border-radius: 70px; opacity: 0.9; ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'basepage' %}">The Blog</a>
+    <a class="navbar-brand" href="{% url 'basepage' %}">ATG Blog</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style=" margin: 30px;" >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
         {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'blogApp:viewblogspage' %}">View Blogs!</a>
@@ -36,7 +40,7 @@
         {% if user.is_authenticated %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            My Account
+            Hi! @{{ user.username }}, Go to Your Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{% url 'blogApp:createblogpage' %}">Post a Blog</a></li>
@@ -45,37 +49,117 @@
             <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Random Button</a>
-        </li>
+
         {% endif %}
       </ul>
       {% if user.is_authenticated %}
       <form class="d-flex" action="{% url 'blogApp:searchuserpage' %}" method="POST">
         {% csrf_token %}
         <input class="form-control me-2" name='search_user' type="search" placeholder="Search user's blogs" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success bg-light text-dark" style=" border-radius: 30px; "  type="submit">Search</button>
       </form>
       {% endif %}
     </div>
   </div>
 </nav>
 
-  <div class="container">
-    <div class="jumbotron">
-      {% block bodyblock %}
+
+    <div class="container">
+      <div class="jumbotron" style=" opacity: 0.9; border-radius: 100px; background-image: url('https://wallpaper-house.com/data/out/8/wallpaper2you_209931.jpg'); " >
+
+
+
+
+
+        {% block bodyblock %}
 
 
 
 
 
 
+        <div class="alert alert-light" role="alert" style=" border-radius: 20px;">
+        <h3 style=" text-align: center; font-style: italic; " >Welcome to ATG Task Blogging Web App!</h3>
+        </div>
+        <div class="card-columns" style=" border-radius: 50px;" >
+          <div class="card" style=" border-radius: 50px;">
+            <img class="card-img-top" src="https://www.wallpaperup.com/uploads/wallpapers/2015/02/05/611574/042a2c1830e07563b4ea6bf0f9da73f8-700.jpg" alt="Card image cap" style=" border-radius: 50px; " >
+            <div class="card-body">
+              <h5 class="card-title">What is a Blog?</h5>
+              <p class="card-text">A blog is an online diary or journal located on a website. The content of a blog typically includes text, pictures, videos, animated GIFs and even scans from old physical offline diaries or journals and other hard copy documents. Since a blog can exist merely for personal use, sharing information with an exclusive group or to engage the public, a blog owner can set their blog for private or public access.</p>
+            </div>
+          </div>
+          <div class="card p-3" style=" border-radius: 50px;">
+            <blockquote class="blockquote mb-0 card-body">
+              <p>“Don’t focus on having a great blog. Focus on producing a blog that’s great for your readers.”</p>
+              <footer class="blockquote-footer">
+                <small class="text-muted">
+                  Quote By <cite title="Source Title">Brian Clark</cite>
+                </small>
+              </footer>
+            </blockquote>
+          </div>
+          <div class="card" style=" border-radius: 50px;">
+            <img class="card-img-top" src="https://cdn.hipwallpaper.com/i/26/73/dx2RXK.jpg" style=" border-radius: 50px; " alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Why Blogging?</h5>
+              <p class="card-text">Write up a few rules and a schedule of events. Set up a blog hop for a certain amount of time. For each of the days, provide a daily prompt. It will pull other bloggers into the fun of writing posts on that topic. Encourage bloggers to visit other bloggers' posts who are also a part of the blog hop.</p>
+              <p class="card-text"><small class="text-muted"></small></p>
+            </div>
+          </div>
+          <div class="card bg-secondary text-white text-center p-3" style=" border-radius: 50px;">
+            <blockquote class="blockquote mb-0">
+              <p>The first thing you need to decide when you build your blog is what you want to accomplish with it, and what it can do if successful.</p>
+              <footer class="blockquote-footer">
+                <small>
+                  Someone famous in <cite title="Source Title">Source Title</cite>
+                </small>
+              </footer>
+            </blockquote>
+          </div>
+          <div class="card text-center" style=" border-radius: 50px;">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text">Blogging is to writing what extreme sports are to athletics: more free-form, more accident-prone, less formal, more alive. It is, in many ways, writing out loud.</p>
+              <p class="card-text"><small class="text-muted"></small></p>
+            </div>
+          </div>
+          <div class="card" style=" border-radius: 50px; " >
+            <img class="card-img" style=" border-radius: 50px; " src="https://www.wallpaperup.com/uploads/wallpapers/2015/02/05/611548/edcd2e21511e4a524631ca201b7d93b0.jpg" alt="Card image">
+          </div>
+          <div class="card p-3 text-right" style=" border-radius: 50px;">
+            <blockquote class="blockquote mb-0">
+              <p>“Blogs are whatever we make them. Defining ‘Blog’ is a fool’s errand.”</p>
+              <footer class="blockquote-footer">
+                <small class="text-muted">
+                  Quote By <cite title="Source Title">Michael Conniff</cite>
+                </small>
+              </footer>
+            </blockquote>
+          </div>
+          <div class="card" style=" border-radius: 50px;">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text">“Where the Internet is about availability of information, blogging is about making information creation available to anyone.”</p>
+              <p class="card-text"><small class="text-muted"></small></p>
+            </div>
+          </div>
+        </div>
 
-      {% endblock %}
 
+
+
+        {% endblock %}
+
+
+
+
+
+
+      </div>
     </div>
 
-  </div>
+
 
   </body>
 </html>

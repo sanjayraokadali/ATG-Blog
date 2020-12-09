@@ -12,8 +12,6 @@ from blogApp.models import PublicBlogModel,PrivateBlogModel
 # Create your views here.
 def BasePage(request):
 
-
-
     return render(request,'blogApp/BasePage.html')
 
 def SearchUserPage(request):
@@ -51,15 +49,16 @@ def PrivateBlogsPage(request):
     bag = True
 
     blogs = PrivateBlogModel.objects.all()
+    pblog = PublicBlogModel.objects.all()
 
 
-    if PrivateBlogModel.objects.count() == 0:
+    if PrivateBlogModel.objects.count() == 0 and PublicBlogModel.objects.count() == 0:
 
         bag = False
     else:
         bag = True
 
-    return render(request,'blogApp/PrivateBlogsPage.html',{'blogs':blogs,'bag':bag})
+    return render(request,'blogApp/PrivateBlogsPage.html',{'blogs':blogs,'bag':bag,'pblog':pblog})
 
 
 def RegistrationPage(request):
@@ -140,7 +139,7 @@ def LoginPage(request):
 
             login(request,user)
 
-            return HttpResponseRedirect(reverse('basepage'))
+            return HttpResponseRedirect(reverse('blogApp:viewblogspage'))
 
         else:
 

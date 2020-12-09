@@ -6,11 +6,12 @@
 
 
     {% if bag %}
-          {% for item in blogs %}
-          <div class="card mb-3" style="max-width: 1200px;">
+          <p style=" text-align: center; font-style: italic; " > <strong>recent posts!</strong> </p>
+          {% for item in blogs reversed %}
+          <div class="card mb-3" style="max-width: 1200px; border-radius: 50px;; ">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="{{ item.pic.url }}" alt="..." style=" width: 50%;" >
+              <img src="{{ item.pic.url }}" alt="..." style=" width: 50%; border-radius: 50px;" >
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -22,6 +23,8 @@
           </div>
           </div>
           {% endfor %}
+
+        <p style=" text-align: center; font-style: italic; "> <strong>old posts..</strong>  </p>
 
       {% else %}
       <h1>No Blog to Show!</h1>
