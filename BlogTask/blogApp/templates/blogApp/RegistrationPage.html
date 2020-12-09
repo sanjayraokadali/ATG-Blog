@@ -6,7 +6,9 @@
 <div class="container"  >
 
   <h1>Registration Page</h1>
-    <form class="" method="POST"  >
+
+
+  <form class="" method="POST"  >
       {% csrf_token %}
       {{ user.as_p }}
       <h4 style=" color: red;" >{{ message }}</h4>
@@ -16,11 +18,16 @@
       <input type="submit" name="" value="Register">
     </form>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-
-
 </div>
+
+
+
+
+
+
+
+
+
 
 
 {% endblock %}

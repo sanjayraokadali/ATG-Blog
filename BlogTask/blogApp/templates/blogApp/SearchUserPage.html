@@ -3,7 +3,8 @@
 
 
 {% block bodyblock %}
-  <h2>Hi @{{user.username}} , I am @{{search_user}} </h2>
+{% if flag %}
+  <h2>Hi <cite>{{user.username}}</cite>  , Thanks for visiting me @ <cite> {{search_user}} </cite></h2>
   {% for item in blogs %}
 
       {% if search_user == item.username %}
@@ -30,5 +31,9 @@
 
   {% endfor %}
 
+{% else %}
+<h5 style=" text-align: center; font-style: italic; " > Blogger Not Found! Please Try Again!</h5>
 
+
+{% endif %}
 {% endblock %}

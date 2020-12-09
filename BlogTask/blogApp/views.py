@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 from blogApp.models import PublicBlogModel,PrivateBlogModel
@@ -16,14 +17,24 @@ def BasePage(request):
 
 def SearchUserPage(request):
 
+    flag = True
+
     if request.method == 'POST':
 
         blogs = PublicBlogModel.objects.all()
 
         search_user = request.POST.get('search_user')
 
+        for item in blogs:
 
-        return render(request,'blogApp/SearchUserPage.html',{'blogs':blogs,'search_user':search_user})
+            if item.username == search_user:
+                flag = True
+                break
+            else:
+                flag = False
+
+
+        return render(request,'blogApp/SearchUserPage.html',{'flag':flag,'blogs':blogs,'search_user':search_user})
     else:
 
         return HttpResponse('User Not Found')
@@ -64,17 +75,18 @@ def PrivateBlogsPage(request):
 def RegistrationPage(request):
 
     form = UserRegistrationForm()
+    flag=True
 
     if request.method == 'POST':
 
         form = UserRegistrationForm(data = request.POST)
+        username = request.POST.get('username')
         password = request.POST.get('password')
         re_password = request.POST.get('re_password')
 
         if form.is_valid():
 
             if re_password == password:
-
                 user = form.save()
 
                 user.set_password(user.password)
@@ -83,7 +95,10 @@ def RegistrationPage(request):
 
                 return BasePage(request)
             else:
-                return render(request,'blogApp/RegistrationPage.html',{'user':form,'message':'passwords didnt match! Please Try Again!'})
+
+                return render(request,'blogApp/RegistrationPage.html',{'user':form,'message':'Passwords did not match Please Try Again!'})
+
+
 
     return render(request,'blogApp/RegistrationPage.html',{'user':form})
 
